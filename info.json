@@ -5,5 +5,5 @@
   "author": "Niklas Helander",
   "factorio_version": "1.0.0",
   "dependencies": ["base >= 1.0.0"],
-  "description": "This mod adds a marker to your corpse. The marker will disappear once you retrieve your corpse or when it times out."
+  "description": "This mod adds a marker to your corpse."
 }

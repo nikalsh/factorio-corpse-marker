@@ -4,31 +4,20 @@ local markers = {}
 
 script.on_event(defines.events.on_player_died, 
   function(event)
-
     local player = game.get_player(event.player_index)
-
-    player.print(player.position.x)
-    player.print(player.position.y)
-
     add_corpse_marker(player)
-
   end
 )
 
 script.on_event(defines.events.on_character_corpse_expired, 
   function(event)
-
-    remove_corpse_marker(event.entity)
-
+    remove_corpse_marker(event.corpse)
   end  
 )
 
 script.on_event(defines.events.on_pre_player_mined_item,
   function(event)    
---  game.print(event.entity.position["x"])
---  game.print(event.entity.position["y"])
     remove_corpse_marker(event.entity)
-
   end
 )
 
@@ -40,9 +29,7 @@ function remove_corpse_marker(entity)
     markers[x][y].destroy()
     markers[x][y] = nil
   end
-
 end
-
 
 function add_corpse_marker(player)
   local x = player.position.x
@@ -69,12 +56,4 @@ function add_corpse_marker(player)
     markers[x] = { y }
     markers[x][y] = tag
   end
-
-end
-
-function print_event(event) 
-  for key, value in pairs(event) do
-    game.print(key)
-    game.print(value)
-  end 
 end
